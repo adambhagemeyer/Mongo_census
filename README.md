@@ -1,7 +1,7 @@
 # US Census MongoDB Scripts
 
 **JS_scripts** - contains JS scripts for creating the database. Will populate the 'States' and 'Counties' collections but none of the others (working on this).
-1. Creates:
+- Creates:
     - 'States' collection with: state FIPS code and state name
     - 'Counties' collection with: full county FIPS code, county name, and state FIPS code
     - Empty 'OccupationByClassOfWorker' collection
