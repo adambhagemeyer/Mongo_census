@@ -17,14 +17,16 @@ def getCountiesByStateName(state_name):
 def getCountiesByStateCode(state_code):
     return [doc['county_name'] for doc in counties_col.find({ 'state_code': state_code })]
 
-code_or_state = input("Are you entering a state name? (y/n): ")
 
-if code_or_state == 'y':
-    state = input('State Name: ')
-    print(getCountiesByStateName(state))
+# testing
+# code_or_state = input("Are you entering a state name? (y/n): ")
 
-else:
-    code = input('State Code: ')
-    print(getCountiesByStateCode(code))
+# if code_or_state == 'y':
+#     state = input('State Name: ')
+#     print(getCountiesByStateName(state))
+
+# else:
+#     code = input('State Code: ')
+#     print(getCountiesByStateCode(code))
 
 
