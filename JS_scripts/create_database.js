@@ -20,7 +20,7 @@ CONNECTION = 'mongodb://127.0.0.1:27017/' + DB_NAME;
 // connecting to the database
 DB = connect(CONNECTION);
 
-FILE_PATH = 'Desktop/MongoDB scripts/JS_scripts/';
+FILE_PATH = 'Desktop/mongo_census/JS_scripts/';
 
 // Creating and populating the 'States' collection
 load(FILE_PATH.concat('states_script.js'));
