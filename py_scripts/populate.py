@@ -1,6 +1,8 @@
 import os
 import add as add
 
+
+
 content_list = ''
 with open('../JS_scripts/counties.txt') as f:
     content_list = f.readlines()[1:]
@@ -12,7 +14,6 @@ print('=============================================================')
 x = 0
 for l in content_list:
     y = l.split()
-    print(y)
     add.addToDB(y[1])
     os.system('clear')
     print(f'{x}/3220 Files Added...')
