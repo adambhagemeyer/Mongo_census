@@ -60,6 +60,31 @@ def getDataSet(fips):
     return r
 
 
+def updateData(fips, year=2019):
+    
+    # Used to update existing entries in the MongoDB
+    # Does essentially the exact same thing as addInfo
+    # except it updates instead of adds 
+
+    data = census_request.Socioeconomic_census_api_request(fips, year)
+
+    # Add the time that this was added so that the
+    # record can be easily updated when the time comes
+    entry_time = date.today()
+    time = date.strftime(entry_time, '%m-%d-%Y')
+
+    new_data = reKeyData(data)
+
+    cols.update_one(
+        {'fips': fips},
+        {
+            '$set':
+            {'timestamp': time, 'dataset': new_data}
+        }
+    )
+
+    return True
+
 
 def reKeyData(data):
 
