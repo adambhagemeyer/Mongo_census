@@ -6,7 +6,7 @@ DB.createCollection('Counties');
 const {readFileSync, promises: fsPromises, linkSync} = require('fs');
 
 // turn the text file into an array. Each line is a string
-var lines = readFile(FILE_PATH.concat('counties.txt'));
+var lines = readFile('counties.txt');
 
 // Remove the first and last line from the text file
 lines.pop();

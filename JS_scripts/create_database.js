@@ -20,16 +20,15 @@ CONNECTION = 'mongodb://127.0.0.1:27017/' + DB_NAME;
 // connecting to the database
 DB = connect(CONNECTION);
 
-FILE_PATH = 'ahagemeyer/Mongo_census/JS_scripts/';
 
 // Creating and populating the 'States' collection
-load(FILE_PATH.concat('states_script.js'));
+load('states_script.js');
 
 // Creating and populating the 'Counties' collection
-load(FILE_PATH.concat('counties_script.js'));
+load('counties_script.js');
 
 // Creating the categories
-load(FILE_PATH.concat('categories_script.js'));
+load('categories_script.js');
 
 
 
