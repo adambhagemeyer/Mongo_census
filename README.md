@@ -5,4 +5,4 @@
 2. Run ``` python create_database.py ```
 3. Done!
 
-[^1]: If the 'python' command doesn't work, try 'python3' instead
+**Note:** If the 'python' command doesn't work, try 'python3' instead
