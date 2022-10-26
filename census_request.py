@@ -34,6 +34,8 @@ def Occupation_census_api_request(code, param_year=2019):
     percentage_data = c.acs5.state_county(fields = percentage_cols, 
                                state_fips=state, county_fips=county, year=param_year)
 
+    if not totals_data and not percentage_data:
+        return {}
 
     data = combine_data_sets(totals_data, percentage_data, cols)
     
@@ -63,6 +65,8 @@ def Industry_census_api_request(code, param_year=2019):
     percentage_data = c.acs5.state_county(fields = percentage_cols, 
                                state_fips=state, county_fips=county, year=param_year)
 
+    if not totals_data or not percentage_data:
+        return {}
 
     data = combine_data_sets(totals_data, percentage_data, cols)
 
@@ -92,6 +96,8 @@ def Education_census_api_request(code, param_year=2019):
     percentage_data = c.acs5.state_county(fields = percentage_cols, 
                                state_fips=state, county_fips=county, year=param_year)
 
+    if not totals_data or not percentage_data:
+        return {}
 
     data = combine_data_sets(totals_data, percentage_data, cols)
     
@@ -120,6 +126,8 @@ def Socioeconomic_census_api_request(code, param_year=2019):
     percentage_data = c.acs5.state_county(fields = percentage_cols, 
                                state_fips=state, county_fips=county, year=param_year)
 
+    if not totals_data or not percentage_data:
+        return {}
 
     data = combine_data_sets(totals_data, percentage_data, cols)
     

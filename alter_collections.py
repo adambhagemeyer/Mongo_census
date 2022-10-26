@@ -36,3 +36,6 @@ def updateDB(fips):
     edu = Education.updateData(fips)
 
     return True
+
+addToDB('02063')
+print('true')
