@@ -2,6 +2,7 @@ import Education
 import Socioeconomic
 import OccupationByClassOfWorker
 import IndustryByOccupation
+import dbConfig
 
 def addToDB(fips):
 
@@ -35,4 +36,23 @@ def updateDB(fips):
 
     edu = Education.updateData(fips)
 
+    return True
+
+def checkDB(fips):
+
+    db = dbConfig.get_Database()
+
+    occ = db['OccupationByClassOfWorker']
+    ind = db['IndustryByOccupation']
+    soc = db['Socioeconomic']
+    edu = db['Education']
+
+    if occ.count_documents({'fips': fips}, limit=1) == 0:
+        return False
+    if ind.count_documents({'fips': fips}, limit=1) == 0:
+        return False
+    if soc.count_documents({'fips': fips}, limit=1) == 0:
+        return False
+    if edu.count_documents({'fips': fips}, limit=1) == 0:
+        return False
     return True

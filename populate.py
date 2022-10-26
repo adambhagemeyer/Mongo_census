@@ -1,5 +1,6 @@
 import os
 import alter_collections as add
+import pymongo
 
 
 
@@ -31,4 +32,15 @@ print('===================== Load Completed! =======================')
 print('=============================================================')
 print('=============================================================')
 
-    
+x = []
+for l in content_list:
+    y = l.split()
+    if add.checkDB(y[1]):
+        x.append(y[1])
+
+print('\n')
+print('\n')
+print('\n')
+print('\n')
+print('Data not added because of issues with the API: ')
+print(x)
