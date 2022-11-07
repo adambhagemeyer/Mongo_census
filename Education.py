@@ -1,3 +1,4 @@
+from re import X
 import sys
 import os
 
@@ -43,11 +44,12 @@ def addInfo(fips, year=2019):
     new_data = reKeyData(data)
 
     cols.insert_one(
-    {
-        'fips': fips,
-        'timestamp': time,
-        'dataset': new_data
-    })
+        {
+            'fips': fips,
+            'timestamp': time,
+            'dataset': new_data
+        }
+    )
 
     return True
 
@@ -83,7 +85,8 @@ def updateData(fips, year=2019):
         {
             '$set':
             {'timestamp': time, 'dataset': new_data}
-        }
+        },
+        upsert=True
     )
 
     return True

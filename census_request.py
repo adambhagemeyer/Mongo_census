@@ -134,6 +134,41 @@ def Socioeconomic_census_api_request(code, param_year=2019):
     ## Return the data in JSON format
     return data
 
+def New_socioeconomic_census_api_request(code):
+    API_KEY = 'd19843a72adf95bac43d31835bbd3af890e80a86'
+    c = Census(API_KEY)
+
+    current_year = date.today().year
+    ret = []
+
+    county = code[-3:]
+    state = code[:2]
+    cols = getSocioeconomicKeys()
+
+    totals_cols = append_in_list(cols, 'E')
+    percentage_cols = append_in_list(cols, 'M')
+
+    for y in range(current_year - 4, current_year - 1):
+
+        try:
+            totals_data = c.acs5.state_county(fields = totals_cols, 
+                               state_fips=state, county_fips=county, year=y)
+        
+            percentage_data = c.acs5.state_county(fields = percentage_cols, 
+                               state_fips=state, county_fips=county, year=y)
+        except:
+            pass
+        
+        data = combine_data_sets(totals_data, percentage_data, cols)
+
+        ret.append(data)
+
+    if not ret:
+        return {}
+
+    return ret
+
+
 # Returns the columns that will be used in the Occupation API request
 def getOccupationKeys():
 
@@ -255,3 +290,4 @@ def combine_data_sets(new, old, keys):
 
 def last_index(l):
     return len(l)-1
+

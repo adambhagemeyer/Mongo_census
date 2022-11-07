@@ -1,3 +1,4 @@
+from audioop import add
 import Education
 import Socioeconomic
 import OccupationByClassOfWorker
@@ -47,12 +48,25 @@ def checkDB(fips):
     soc = db['Socioeconomic']
     edu = db['Education']
 
-    if occ.count_documents({'fips': fips}, limit=1) == 0:
-        return False
-    if ind.count_documents({'fips': fips}, limit=1) == 0:
-        return False
-    if soc.count_documents({'fips': fips}, limit=1) == 0:
-        return False
-    if edu.count_documents({'fips': fips}, limit=1) == 0:
-        return False
-    return True
+    x = {}
+    cols = []
+    if occ.count_documents({'fips': fips}) > 0:
+        cols.append('OccupationByClassOfWorker')
+    if ind.count_documents({'fips': fips}) > 0:
+        cols.append('IndustryByOccupation')
+    if soc.count_documents({'fips': fips}) > 0:
+        cols.append('Socioeconomic')
+    if edu.count_documents({'fips': fips}) > 0:
+        cols.append('Education')
+    
+    if len(cols) == 0:
+        return {}
+
+    x[fips] = cols
+    return x
+
+
+    
+
+
+

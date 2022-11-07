@@ -14,8 +14,3 @@ def getStateFips():
     fips = [doc['state_code'] for doc in states_col.find()]
     return fips
 
-print(getStateNames())
-print('\n')
-print('\n')
-time.sleep(3)
-print(getStateFips())

@@ -16,7 +16,7 @@ from pymongo import MongoClient
 # Gets the database
 db = dbConfig.get_Database()
 # gets the collection
-cols = db['Socioeconomic']
+cols = db['NewSocioeconomic']
 
 def addInfo(fips, year=2019):
 
@@ -29,7 +29,7 @@ def addInfo(fips, year=2019):
     # 
     # returns True if the insertion was successful
 
-    data = census_request.Socioeconomic_census_api_request(fips, year)
+    data = census_request.New_socioeconomic_census_api_request(fips)
 
     if not data:
         return False
@@ -39,7 +39,9 @@ def addInfo(fips, year=2019):
     entry_time = date.today()
     time = date.strftime(entry_time, '%m-%d-%Y')
 
-    new_data = reKeyData(data)
+    new_data = []
+    for d in data:
+        new_data.append(reKeyData(d))
 
     cols.insert_one(
     {
@@ -111,3 +113,4 @@ def getStringKeys():
     )
 
     return new
+
