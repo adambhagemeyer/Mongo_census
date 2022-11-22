@@ -71,6 +71,9 @@ def updateData(fips, year=2019):
 
     data = census_request.Occupation_census_api_request(fips, year)
 
+    if not data:
+        return False
+
     # Add the time that this was added so that the
     # record can be easily updated when the time comes
     entry_time = date.today()

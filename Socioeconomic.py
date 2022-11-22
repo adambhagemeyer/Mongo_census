@@ -16,7 +16,7 @@ from pymongo import MongoClient
 # Gets the database
 db = dbConfig.get_Database()
 # gets the collection
-cols = db['NewSocioeconomic']
+cols = db['Socioeconomic']
 
 def addInfo(fips, year=2019):
 
@@ -72,6 +72,9 @@ def updateData(fips, year=2019):
     # except it updates instead of adds 
 
     data = census_request.Socioeconomic_census_api_request(fips, year)
+
+    if not data:
+        return False
 
     # Add the time that this was added so that the
     # record can be easily updated when the time comes

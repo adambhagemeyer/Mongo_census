@@ -158,12 +158,20 @@ def New_socioeconomic_census_api_request(code):
                                state_fips=state, county_fips=county, year=y)
         except:
             pass
+
+        for key in totals_data[0]:
+            if totals_data[0][key] == None:
+                return {}
+
+        for key in percentage_data[0]:
+            if percentage_data[0][key] == None:
+                return {}
         
         data = combine_data_sets(totals_data, percentage_data, cols)
 
         ret.append(data)
 
-    if not ret:
+    if not len(ret) == 3:
         return {}
 
     return ret
@@ -280,6 +288,7 @@ def combine_data_sets(new, old, keys):
     oldlistkeys = append_in_list(keys, 'M')
 
     newdict = {}
+
     x = 0
     for k in keys:
         pct = round(new[0][newlistkeys[x]] / new[0][newlistkeys[last_index(newlistkeys)]], 2)
@@ -291,3 +300,6 @@ def combine_data_sets(new, old, keys):
 def last_index(l):
     return len(l)-1
 
+x = New_socioeconomic_census_api_request('35039')
+
+print(x)
