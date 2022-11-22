@@ -106,7 +106,7 @@ def Education_census_api_request(code, param_year=2019):
 
 
 ## Pull Socioeconomic data using the census API
-def Socioeconomic_census_api_request(code, param_year=2019):
+def Socioeconomic_census_api_request(code, param_year):
     API_KEY = 'd19843a72adf95bac43d31835bbd3af890e80a86'
     c = Census(API_KEY)
 

@@ -19,13 +19,14 @@ socio_cols = db['Socioeconomic']
 
 def update(fips):
 
-    OccupationByClassOfWorker.updateData(fips)
+    year = date.today().year
+    OccupationByClassOfWorker.updateData(fips, year)
 
-    IndustryByOccupation.updateData(fips)
+    IndustryByOccupation.updateData(fips, year)
 
-    Education.updateData(fips)
+    Education.updateData(fips, year)
 
-    Socioeconomic.updateData(fips)
+    Socioeconomic.updateData(fips, year)
 
 
 n = 1

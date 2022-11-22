@@ -65,7 +65,7 @@ def getDataSet(fips):
     return r
 
 
-def updateData(fips, year=2019):
+def updateData(fips, year):
     
     # Used to update existing entries in the MongoDB
     # Does essentially the exact same thing as addInfo
