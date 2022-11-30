@@ -71,7 +71,7 @@ def updateData(fips, year=2019):
     # Does essentially the exact same thing as addInfo
     # except it updates instead of adds 
 
-    data = census_request.Socioeconomic_census_api_request(fips, year)
+    data = census_request.New_socioeconomic_census_api_request(fips, year)
 
     if not data:
         return False
